@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secure Image Steganography</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.3/dist/dotlottie-wc.js" type="module"></script>
+</head>
+<body>
+
+    <h1>🔐 Secure Image Message System</h1>
+
+    <div class="flip-container">
+        <div class="flip-card" id="flipCard">
+
+            <div class="flip-card-front">
+                <h2>Encrypt Message into Image</h2>
+                <form id="encryptForm" action="/encrypt" method="POST" enctype="multipart/form-data" autocomplete="off">
+                    <input type="file" name="image" required>
+                    <textarea name="message" placeholder="Enter secret message" required></textarea>
+                    <input type="password" name="password" placeholder="Enter password" required>
+                    <button type="submit">Encrypt Image</button>
+                </form>
+                
+                <div class="switch-text">
+                    Want to decrypt a message? 
+                    <button type="button" onclick="flipCard()">Go to Decrypt</button>
+                </div>
+            </div>
+
+            <div class="flip-card-back">
+                <h2>Decrypt Message from Image</h2>
+                <form id="decryptForm" method="POST" enctype="multipart/form-data" autocomplete="off">
+                    <input type="file" name="image" required>
+                    <input type="password" name="password" placeholder="Enter password" required>
+                    <button type="submit">Decrypt</button>
+                </form>
+
+                <div class="switch-text">
+                    Want to encrypt a message? 
+                    <button type="button" onclick="flipCard()">Go to Encrypt</button>
+                </div>
+
+                <div id="loader" style="display:none;text-align:center;margin-top:20px;">
+                    <p style="color:#00ffae;font-weight:bold;">🔓 Decrypting the message...</p>
+                    <dotlottie-wc src="https://lottie.host/ee463d09-a4f9-4053-b94c-8ef2d1e2b37e/jQwIeukQ8M.lottie" style="width:200px;height:200px" autoplay loop></dotlottie-wc>
+                </div>
+
+                <div id="resultBox" class="message-box" style="display:none;">
+                    <h3>🔓 Decrypted Message</h3>
+                    <p id="resultText"></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

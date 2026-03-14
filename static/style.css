@@ -1,0 +1,274 @@
+/* Global Page Style */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centers everything vertically on the page */
+    overflow-x: hidden;
+}
+
+/* Title */
+h1 {
+    font-size: 32px;
+    letter-spacing: 1px;
+    color: #00ffae;
+    text-shadow: 0 0 10px rgba(0,255,174,0.6);
+    padding: 0 15px;
+    margin-bottom: 10px;
+}
+
+/* Flip Container Mechanics */
+.flip-container {
+    perspective: 1200px;
+    width: 110%; 
+    max-width: 420px; 
+    height: 490px; 
+    margin-bottom: 15px;
+}
+
+.flip-card {
+    width: 115%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Gives a slight "bounce" effect to the flip */
+}
+
+.flip-card.flipped {
+    transform: rotateY(180deg);
+}
+
+/* Front and Back Container Styles */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    box-sizing: border-box;
+
+    backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 20px; /* Slightly rounder corners for a modern app feel */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly; /* Spreads content evenly so it doesn't look empty */
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+    overflow-y: auto; 
+}
+
+.flip-card-front h2, .flip-card-back h2 {
+    color: #00ffae;
+    margin: 0;
+    width: 100%;
+    font-size: 24px;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Adds consistent spacing between inputs */
+}
+
+/* General Inputs */
+input, textarea {
+    width: 100%;
+    padding: 14px; /* Larger padding for a premium feel */
+    border-radius: 10px;
+    border: 1px solid rgba(0, 255, 174, 0.2);
+    outline: none;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    font-size: 15px;
+    transition: 0.3s;
+    box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+    box-shadow: 0 0 12px rgba(0, 255, 174, 0.8);
+    border-color: #00ffae;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+/* Custom File Input Styling */
+input[type="file"] {
+    padding: 12px;
+    background: rgba(0, 255, 174, 0.05);
+    border: 1px dashed #00ffae;
+    color: #e0e0e0;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+input[type="file"]:hover {
+    background: rgba(0, 255, 174, 0.15);
+}
+
+/* Styling the actual "Choose File" button part */
+input[type="file"]::file-selector-button {
+    background: linear-gradient(45deg, #00adb5, #00ffae);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    color: #0f2027;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: 0.3s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 174, 0.6);
+}
+
+/* Buttons */
+button {
+    padding: 14px 22px;
+    background: linear-gradient(45deg, #00adb5, #00ffae);
+    border: none;
+    color: #0f2027;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-size: 16px;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 255, 174, 0.4);
+}
+
+/* Switch Text (Flip Trigger) */
+.switch-text {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.switch-text button {
+    font-size: 12px;
+    padding: 8px 20px;
+    width: auto; 
+    background: transparent;
+    border: 1px solid #00ffae;
+    color: #00ffae;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.switch-text button:hover {
+    background: rgba(0, 255, 174, 0.1);
+    transform: none;
+    box-shadow: 0 0 10px rgba(0, 255, 174, 0.3);
+}
+
+/* Loader */
+#loader {
+    animation: fadeIn 0.5s ease;
+    width: 100%;
+}
+
+/* Message Box */
+.message-box {
+    padding: 18px;
+    background: rgba(0, 255, 174, 0.1);
+    border: 1px solid #00ffae;
+    border-radius: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    animation: fadeIn 0.5s ease;
+}
+
+.message-box h3 {
+    color: #00ffae;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.message-box p {
+    font-size: 16px;
+    word-wrap: break-word;
+    color: white;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS (The Screen-Fill Magic)
+   ========================================= */
+@media(max-width: 600px) {
+    h1 {
+        font-size: 26px;
+        margin-top: 10px;
+    }
+    
+    .flip-container {
+        width: 95%; /* Takes up almost the whole width */
+        height: 78vh; /* Dynamically fills 78% of the screen height */
+        min-height: 600px; /* Ensures it never gets too squished on tiny phones */
+        max-height: 800px;
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        padding: 30px 20px; 
+        border-radius: 25px; /* Softer, app-like corners */
+    }
+
+    /* Stack the file button and text beautifully on mobile */
+    input[type="file"]::file-selector-button {
+        display: block;
+        width: 100%;
+        margin: 0 0 10px 0;
+        text-align: center;
+    }
+
+    input[type="file"] {
+        padding: 15px 12px;
+        text-align: center;
+    }
+    
+    input, textarea, button {
+        font-size: 16px; /* 16px prevents iOS from automatically zooming in on inputs */
+    }
+    
+    textarea {
+        flex-grow: 1; /* Allows the textarea to expand into the available space */
+        min-height: 120px;
+    }
+}
